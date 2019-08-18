@@ -23,4 +23,6 @@ EXPOSE 9000 9001 9002 9004 7000 8000
 ADD kms.init /etc/profile.d/custom.sh
 RUN chmod a+x /etc/profile.d/custom.sh
 
+ADD kmsdb_peer.init /root/DB
+
 ENTRYPOINT ["/usr/sbin/init"]

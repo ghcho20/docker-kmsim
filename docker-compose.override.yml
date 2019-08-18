@@ -15,6 +15,7 @@ services:
     privileged: true
     environment:
       - KMS_NAME=KMSM
+      - KMS_PEER=KMSS
 
   kmss:
     depends_on:
@@ -31,3 +32,4 @@ services:
     privileged: true
     environment:
       - KMS_NAME=KMSS
+      - KMS_PEER=KMSM
