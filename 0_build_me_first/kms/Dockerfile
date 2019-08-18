@@ -1,6 +1,6 @@
 FROM centos:0
 
-RUN yum install -y telnet
+RUN yum install -y telnet nc
 
 ENV KMS_HOME /root
 ENV LD_LIBRARY_PATH ${KMS_HOME}/lib
