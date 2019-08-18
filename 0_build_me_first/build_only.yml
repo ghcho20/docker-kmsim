@@ -1,0 +1,17 @@
+version: '3.5'
+
+services:
+  centos:
+    build: centos
+    image: centos:0
+    container_name: centos0
+
+  kms:
+    build:
+      context: kms
+      args:
+        timezone: ${TIMEZONE}
+    image: kms:0
+    depends_on:
+      - centos
+    container_name: kms0

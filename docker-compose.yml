@@ -1,0 +1,19 @@
+version: '3.5'
+
+services:
+  mariadb:
+    build: mariadb
+    image: mariadb:kems
+    container_name: kems_db
+
+  tomcat:
+    build: webapp
+    depends_on:
+      - mariadb
+    restart: on-failure
+    image: tomcat:kems
+    container_name: kems_web
+    links:
+      - mariadb:kemsdb
+    ports:
+      - 8080:8080

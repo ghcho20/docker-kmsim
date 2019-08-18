@@ -1,0 +1,32 @@
+version: '3.5'
+
+services:
+  kmsm:
+    depends_on:
+      - tomcat
+    image: kms:0
+    container_name: kmsm
+    links:
+      - tomcat:kems
+    sysctls:
+      kernel.msgmax: 65536
+      kernel.msgmni: 1253
+      kernel.msgmnb: 6553600
+    privileged: true
+    environment:
+      - KMS_NAME=KMSM
+
+  kmss:
+    depends_on:
+      - tomcat
+    image: kms:0
+    container_name: kmss
+    links:
+      - tomcat:kems
+    sysctls:
+      kernel.msgmax: 65536
+      kernel.msgmni: 1253
+      kernel.msgmnb: 6553600
+    privileged: true
+    environment:
+      - KMS_NAME=KMSS

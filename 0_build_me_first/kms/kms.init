@@ -1,0 +1,14 @@
+KEMS_IP=$(/usr/bin/host kems | /usr/bin/awk '{print $NF}')
+
+/usr/bin/systemctl stop kms
+
+echo "setup.sh $KMS_NAME $KEMS_IP"
+/root/setup.sh $KMS_NAME $KEMS_IP
+
+echo "systemctl start kms"
+/usr/bin/systemctl start kms
+
+echo "pman -d"
+/root/bin/pman -d
+
+rm -f /etc/profile.d/custom.sh

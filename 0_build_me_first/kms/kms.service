@@ -1,0 +1,48 @@
+[Unit]
+Description=KMS Service
+After=network.target
+
+[Service]
+Type=forking
+User=root
+Environment=KMS_HOME=/root
+
+ExecStartPre=/root/bin/pman -a ABRK ABRK abrk 0
+ExecStartPre=/root/bin/pman -a DBMD DBMD dbmd 0
+ExecStartPre=/root/bin/pman -a IBRK IBRK ibrk 0
+ExecStartPre=/root/bin/pman -a SYMD SYMD symd 0
+ExecStartPre=/root/bin/pman -a ADMRD ADMRD admrd 0
+ExecStartPre=/root/bin/pman -a EBRK EBRK ebrk 0
+ExecStartPre=/root/bin/pman -a PAGTS PAGTS pagts 0
+ExecStartPre=/root/bin/pman -a SMMD SMMD smmd 0
+ExecStartPre=/root/bin/pman -a ECDHD ECDHD ecdhd 0
+ExecStartPre=/root/bin/pman -a KGND KGND kgnd 0
+ExecStartPre=/root/bin/pman -a KMSD KMSD kmsd 0
+ExecStartPre=/root/bin/pman -a CAGTR CAGTR cagtr 0
+ExecStartPre=/root/bin/pman -a CAGTS CAGTS cagts 0
+ExecStartPre=/root/bin/pman -a CLID CLID clid 0
+ExecStartPre=/root/bin/pman -a SWD SWD swd 0
+ExecStart=/root/bin/pman -fs all
+
+ExecStop=/root/bin/pman -fk all
+ExecStopPost=/root/bin/pman -D ABRK
+ExecStopPost=/root/bin/pman -D DBMD
+ExecStopPost=/root/bin/pman -D IBRK
+ExecStopPost=/root/bin/pman -D SYMD
+ExecStopPost=/root/bin/pman -D ADMRD
+ExecStopPost=/root/bin/pman -D EBRK
+ExecStopPost=/root/bin/pman -D PAGTS
+ExecStopPost=/root/bin/pman -D SMMD
+ExecStopPost=/root/bin/pman -D ECDHD
+ExecStopPost=/root/bin/pman -D KGND
+ExecStopPost=/root/bin/pman -D KMSD
+ExecStopPost=/root/bin/pman -D CAGTR
+ExecStopPost=/root/bin/pman -D CAGTS
+ExecStopPost=/root/bin/pman -D CLID
+ExecStopPost=/root/bin/pman -D SWD
+
+Restart=on-abort
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
