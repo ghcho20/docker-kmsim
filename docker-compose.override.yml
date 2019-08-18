@@ -19,6 +19,7 @@ services:
   kmss:
     depends_on:
       - tomcat
+      - kmsm
     image: kms:0
     container_name: kmss
     links:
