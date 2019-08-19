@@ -1,4 +1,4 @@
-# docker-kmsim
+# Summary
 IDQ KMS simulaion in docker
 * kems tomcat(& mariadb) ready (port 8080 exposed&forwarded)
 * kms initial/default configuration ready
@@ -7,26 +7,26 @@ IDQ KMS simulaion in docker
   * neighbor(peer kms) added
   * kms psk added
 
-## Images:
+## images:
 * centos:0 (base for kms:0)
 * kms:0 (base for kms containers)
 * kems_web (tomcat + kems war)
 * kems_db (mariadb)
 
-## Supported Mode
+## supported Mode
 * all-in-one simulation : kems(tomcat+mariadb), kms master, kms slave
 * kems only
 
-# Quick Start
+# Quick Start Guide
 
-## Build base images
+## build base images
 1. `cd 0_build_me_first`
 2. set timezone
    * open `.env` file
    * change timezone string according to [tz database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones "Title")
 3. `docker-compose -f build_only.yml build --force-rm` (**build only**)
 
-## Run all-in-one simulation
+## run all-in-one simulation
 kems(tomcat + mariadb), kms master, kms slave
 * move to **top** folder
 * launch: `docker-compose up -d`
@@ -57,7 +57,7 @@ PORTS           3306/tcp
 Up 18 seconds   @ 2019-08-19 02:44:03 +0900 KST
 ```
 
-## Run **kems** only
+## run **kems** only
 kems(tomcat + mariadb) only to run standalone WAS
 * move to **top** folder
 * launch: `docker-compose -f docker-compose.yml up -d`
