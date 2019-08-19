@@ -1,10 +1,11 @@
 # docker-kmsim
 IDQ KMS simulaion in docker
 * kems tomcat(& mariadb) ready (port 8080 exposed&forwarded)
-* kms initial configuration ready
+* kms initial/default configuration ready
   * master/slave setup
-  * neighbor setup (peer kms)
-  * kms psk ready
+  * kems added
+  * neighbor(peer kms) added
+  * kms psk added
 
 ## Images:
 * centos:0 (base for kms:0)
