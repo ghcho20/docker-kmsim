@@ -22,8 +22,8 @@ IDQ KMS simulaion in docker
 ## Build base images
 1. `cd 0_build_me_first`
 2. set timezone
-  * open `.env` file
-  * change timezone string according to [tz database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones "Title")
+   * open `.env` file
+   * change timezone string according to [tz database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones "Title")
 3. `docker-compose -f build_only.yml build --force-rm` (**build only**)
 
 ## Run all-in-one simulation
