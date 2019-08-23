@@ -1,6 +1,7 @@
 FROM mariadb:10.3
 
 ADD init.sql.gz /docker-entrypoint-initdb.d/
+RUN chmod a+rx /docker-entrypoint-initdb.d/init.sql.gz
 
 ENV MYSQL_ROOT_PASSWORD kmsDb#1234
 ENV MYSQL_DATABASE kms_admin
