@@ -17,3 +17,4 @@ services:
       - mariadb:kemsdb
     ports:
       - 8080:8080
+    command: bash -c "sleep 15; catalina.sh run"
