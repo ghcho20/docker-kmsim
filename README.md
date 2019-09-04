@@ -6,12 +6,15 @@ IDQ KMS simulaion in docker
   * kems added
   * neighbor(peer kms) added
   * kms psk added
+## branches
+* v201 : old version
+* master : new version 2.0.2
 
 ## images:
 * centos:0 (base for kms:0)
 * kms:0 (base for kms containers)
-* kems_web (tomcat + kems war)
-* kems_db (mariadb)
+* tomcat:kems (tomcat + kems war)
+* mariadb:kems (mariadb)
 
 ## supported Mode
 * all-in-one simulation : kems(tomcat+mariadb), kms master, kms slave
@@ -20,14 +23,16 @@ IDQ KMS simulaion in docker
 # Quick Start Guide
 
 ## build base images
+1. (optional if upgraded to new version) `docker rmi kms:0`
 1. `cd 0_build_me_first`
-2. set timezone
+1. set timezone
    * open `.env` file
    * change timezone string according to [tz database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones "Title")
-3. `docker-compose -f build_only.yml build --force-rm` (**build only**)
+1. `docker-compose -f build_only.yml build --force-rm` (**build only**)
 
 ## run all-in-one simulation
 kems(tomcat + mariadb), kms master, kms slave
+* (optional if upgraded to new version) `docker rmi tomcat:kems mariadb:kems`
 * move to **top** folder
 * launch: `docker-compose up -d`
 * stop: `docker-compose stop`
@@ -59,6 +64,7 @@ Up 18 seconds   @ 2019-08-19 02:44:03 +0900 KST
 
 ## run **kems** only
 kems(tomcat + mariadb) only to run standalone WAS
+* (optional if upgraded to new version) `docker rmi tomcat:kems mariadb:kems`
 * move to **top** folder
 * launch: `docker-compose -f docker-compose.yml up -d`
 * stop: `docker-compose -f docker-compose.yml stop`
