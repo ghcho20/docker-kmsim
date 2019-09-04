@@ -23,7 +23,7 @@ IDQ KMS simulaion in docker
 # Quick Start Guide
 
 ## build base images
-1. (<font color="blue">_optional if upgraded to new version_</font>) `docker rmi kms:0`
+1. (_optional if upgraded to new version_){: .gitlab-blue} `docker rmi kms:0`
 1. `cd 0_build_me_first`
 1. set timezone
    * open `.env` file
