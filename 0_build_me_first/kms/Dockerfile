@@ -10,7 +10,7 @@ RUN echo ZONE="\"$timezone\"" > /etc/sysconfig/clock
 RUN ln -sf /usr/share/zoneinfo/$timezone /etc/localtime
 
 WORKDIR /root
-ADD PKG_KMS_V2.0.1.tar.gz .
+ADD PKG_KMS_V2.0.2.tar.gz .
 
 RUN echo "${KMS_HOME}/lib" >> /etc/ld.so.conf
 RUN ldconfig
