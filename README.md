@@ -32,7 +32,7 @@ IDQ KMS simulaion in docker
 
 ## run all-in-one simulation
 kems(tomcat + mariadb), kms master, kms slave
-* (**_optional if upgraded to new version_**) `docker rmi tomcat:kems`
+* (**_optional if upgraded to new version_**) `docker rmi tomcat:kems mariadb:kems`
 * move to **top** folder
 * launch: `docker-compose up -d`
 * stop: `docker-compose stop`
@@ -64,7 +64,7 @@ Up 18 seconds   @ 2019-08-19 02:44:03 +0900 KST
 
 ## run **kems** only
 kems(tomcat + mariadb) only to run standalone WAS
-* (**_optional if upgraded to new version_**) `docker rmi tomcat:kems`
+* (**_optional if upgraded to new version_**) `docker rmi tomcat:kems mariadb:kems`
 * move to **top** folder
 * launch: `docker-compose -f docker-compose.yml up -d`
 * stop: `docker-compose -f docker-compose.yml stop`
