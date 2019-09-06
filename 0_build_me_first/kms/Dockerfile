@@ -24,5 +24,6 @@ ADD kms.init /etc/profile.d/custom.sh
 RUN chmod a+x /etc/profile.d/custom.sh
 
 ADD kmsdb_peer.init /root/DB
+ADD sim/ ./sim/
 
 ENTRYPOINT ["/usr/sbin/init"]
