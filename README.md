@@ -8,7 +8,7 @@ IDQ KMS simulaion in docker
   * kms psk added
 ## branches
 * v201 : old version
-* master : new version 2.0.2
+* v202 : temporary patch for v2.0.2
 
 ## images:
 * centos:0 (base for kms:0)
@@ -25,10 +25,15 @@ IDQ KMS simulaion in docker
 ## build base images
 1. (**_optional if upgraded to new version_**) `docker rmi kms:0`
 1. `cd 0_build_me_first`
-1. set timezone
+1. set timezone (deprecated since branch v202)
    * open `.env` file
    * change timezone string according to [tz database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones "Title")
 1. `docker-compose -f build_only.yml build --force-rm` (**build only**)
+
+## set TIMEZONE in runtime evnironmen (effective from branch v202)
+* create a file, `.env` in the root folder
+> TIMEZONE=<your timezone>
+* To choose <your timezone>, consult [tz database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones "Title")
 
 ## run all-in-one simulation
 kems(tomcat + mariadb), kms master, kms slave
