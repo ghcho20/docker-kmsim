@@ -8,7 +8,8 @@ IDQ KMS simulaion in docker
   * kms psk added
 ## branches
 * v201 : old version
-* v202 : temporary patch for v2.0.2
+* v202 : v2.0.2 with new QKD simulator
+* master == v202 and on
 
 ## images:
 * centos:0 (base for kms:0)
