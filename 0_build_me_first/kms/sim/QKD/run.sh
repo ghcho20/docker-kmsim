@@ -25,4 +25,4 @@
 # arm slave smi
 # update kms_node set node_ip='192.168.85.162', node_port=60032 where node_id=3
 #./sim_qkd_skt -l 1  &
-./sim_qkd_skt5 -l 1 &
+./sim_qkd_skt -l 1 &
