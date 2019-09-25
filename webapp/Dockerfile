@@ -2,8 +2,8 @@ FROM tomcat:8.5.38
 
 RUN rm -rf $CATALINA_HOME/webapps/ROOT
 
-ADD KEMS_20190903.war /tmp
-RUN unzip /tmp/KEMS_20190903.war -d $CATALINA_HOME/webapps/ROOT; rm -f /tmp/KEMS_20190903.war
+ADD KEMS_20190925.war /tmp
+RUN unzip /tmp/KEMS_20190925.war -d $CATALINA_HOME/webapps/ROOT; rm -f /tmp/KEMS_20190925.war
 
 ADD cert.p12 /usr/local/tomcat/webapps/ROOT/resources/fileUpload/certFile/default/
 

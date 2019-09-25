@@ -16,6 +16,7 @@ services:
     environment:
       - KMS_NAME=KMSM
       - KMS_PEER=KMSS
+      - TZ=${TIMEZONE}
     expose:
       - "60025/udp"
 
@@ -35,5 +36,6 @@ services:
     environment:
       - KMS_NAME=KMSS
       - KMS_PEER=KMSM
+      - TZ=${TIMEZONE}
     expose:
       - "60025/udp"

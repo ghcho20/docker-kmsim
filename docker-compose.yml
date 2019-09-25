@@ -5,6 +5,8 @@ services:
     build: mariadb
     image: mariadb:kems
     container_name: kems_db
+    environment:
+      - TZ=${TIMEZONE}
 
   tomcat:
     build: webapp
@@ -13,6 +15,8 @@ services:
     restart: on-failure
     image: tomcat:kems
     container_name: kems_web
+    environment:
+      - TZ=${TIMEZONE}
     links:
       - mariadb:kemsdb
     ports:

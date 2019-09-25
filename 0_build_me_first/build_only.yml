@@ -7,10 +7,7 @@ services:
     container_name: centos0
 
   kms:
-    build:
-      context: kms
-      args:
-        timezone: ${TIMEZONE}
+    build: kms
     image: kms:0
     depends_on:
       - centos

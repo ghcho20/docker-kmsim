@@ -5,12 +5,8 @@ RUN yum install -y telnet nc
 ENV KMS_HOME /root
 ENV LD_LIBRARY_PATH ${KMS_HOME}/lib
 
-ARG timezone
-RUN echo ZONE="\"$timezone\"" > /etc/sysconfig/clock
-RUN ln -sf /usr/share/zoneinfo/$timezone /etc/localtime
-
 WORKDIR /root
-ADD PKG_KMS_V2.0.2.tar.gz .
+ADD PKG_KMS_V2.0.2_0924.tar.gz .
 
 RUN echo "${KMS_HOME}/lib" >> /etc/ld.so.conf
 RUN ldconfig
