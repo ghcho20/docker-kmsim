@@ -32,7 +32,7 @@ IDQ KMS simulaion in docker
 
 ## set TIMEZONE in runtime evnironmen (effective from branch v202)
 * create a file, `.env` in the root folder
-> TIMEZONE=<your timezone>
+> TIMEZONE=\<your timezone\>
 * To choose <your timezone>, consult [tz database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones "Title")
 
 ## run all-in-one simulation
