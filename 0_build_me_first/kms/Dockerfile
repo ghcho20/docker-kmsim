@@ -3,10 +3,10 @@ FROM centos:0
 RUN yum install -y telnet nc
 
 ENV KMS_HOME /root
-ENV LD_LIBRARY_PATH ${KMS_HOME}/lib
+ENV LD_LIBRARY_PATH ${KMS_HOME}/lib:${KMS_HOME}/lib/curl
 
 WORKDIR /root
-ADD PKG_KMS_V2.0.2_0924.tar.gz .
+ADD PKG_KMS_V2.0.2_0926.tar.gz .
 
 RUN echo "${KMS_HOME}/lib" >> /etc/ld.so.conf
 RUN ldconfig
