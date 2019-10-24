@@ -1,4 +1,4 @@
-FROM centos:0
+FROM ghcho20/centos:0
 
 RUN yum install -y telnet nc
 
