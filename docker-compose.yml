@@ -23,7 +23,7 @@ services:
       - mariadb:kemsdb
     ports:
       - 8080:8080
-    command: bash -c "echo > /dev/tcp/kems_db/3306; while [ $$? -ne 0 ]; do echo > /dev/tcp/kems_db/3306; sleep 2; done; catalina.sh run"
+    command: bash -c "echo > /dev/tcp/kemsdb/3306; while [ $$? -ne 0 ]; do echo > /dev/tcp/kemsdb/3306; sleep 2; done; catalina.sh run"
 
 volumes:
   mysql:
