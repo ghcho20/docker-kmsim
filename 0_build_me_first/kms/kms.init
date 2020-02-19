@@ -1,12 +1,11 @@
 KEMS_IP=$(/usr/bin/host kems | /usr/bin/awk '{print $NF}')
+HOST_CONV=$(echo $KMS_NAME | tr '[:upper:]' '[:lower:]')
+MY_IP=$(/usr/bin/host $HOST_CONV | /usr/bin/awk '{print $NF}')
 
 /usr/bin/systemctl stop kms
 
-echo "setup.sh $KMS_NAME $KEMS_IP"
-/root/setup.sh $KMS_NAME $KEMS_IP
-
-sed -i -e "s|%PEER_NAME%|$KMS_PEER|" $KMS_HOME/DB/kmsdb_peer.init
-sqlite3 $KMS_HOME/DB/kms.db < $KMS_HOME/DB/kmsdb_peer.init
+echo "setup.sh $KMS_NAME $MY_MGMT_IP $KEMS_IP"
+/root/setup.sh $KMS_NAME $MY_IP $KEMS_IP
 
 echo "systemctl start kms"
 /usr/bin/systemctl start kms
