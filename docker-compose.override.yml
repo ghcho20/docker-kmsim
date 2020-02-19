@@ -2,6 +2,7 @@ version: '3.5'
 
 services:
   kmsm:
+    build: kms
     depends_on:
       - tomcat
     image: kms:0
@@ -13,12 +14,18 @@ services:
       kernel.msgmni: 1253
       kernel.msgmnb: 6553600
     privileged: true
+    volumes:
+      - init_m:/etc/profile.d
+      - home_m:/root
     environment:
       - KMS_NAME=KMSM
       - KMS_PEER=KMSS
       - TZ=${TIMEZONE}
-    expose:
-      - "60025/udp"
+    networks:
+      sim_net:
+        ipv4_address: 172.16.238.4
+    ports:
+      - 7000:7000 # CAGTR
 
   kmss:
     depends_on:
@@ -33,9 +40,21 @@ services:
       kernel.msgmni: 1253
       kernel.msgmnb: 6553600
     privileged: true
+    volumes:
+      - init_s:/etc/profile.d
+      - home_s:/root
     environment:
       - KMS_NAME=KMSS
       - KMS_PEER=KMSM
       - TZ=${TIMEZONE}
-    expose:
-      - "60025/udp"
+    networks:
+      sim_net:
+        ipv4_address: 172.16.238.5
+    ports:
+      - 7001:7000 # CAGTR
+
+volumes:
+  init_m:
+  init_s:
+  home_m:
+  home_s:

@@ -1,7 +1,0 @@
-version: '3.5'
-
-services:
-  kms:
-    build: kms
-    image: kms:0
-    container_name: kms0

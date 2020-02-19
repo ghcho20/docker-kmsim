@@ -11,6 +11,9 @@ services:
       - MYSQL_ROOT_PASSWORD=kmsDb#1234
       - MYSQL_DATABASE=kms_admin
       - TZ=${TIMEZONE}
+    networks:
+      sim_net:
+        ipv4_address: 172.16.238.2
     command: ["--character_set_server=utf8", "--lower_case_table_names=1"]
   tomcat:
     build: webapp
@@ -23,9 +26,20 @@ services:
       - TZ=${TIMEZONE}
     links:
       - mariadb:kemsdb
+    networks:
+      sim_net:
+        ipv4_address: 172.16.238.3
     ports:
       - 8080:8080
     command: bash -c "echo > /dev/tcp/kemsdb/3306; while [ $$? -ne 0 ]; do echo > /dev/tcp/kems_db/3306; sleep 2; done; catalina.sh run"
 
 volumes:
   mysql:
+
+networks:
+  sim_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.238.0/24

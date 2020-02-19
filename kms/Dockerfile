@@ -15,8 +15,6 @@ RUN echo "${KMS_HOME}/lib" >> /etc/ld.so.conf && ldconfig
 ADD kms.service /usr/lib/systemd/system
 RUN ln -sf /usr/lib/systemd/system/kms.service /etc/systemd/system/multi-user.target.wants/kms.service
 
-EXPOSE 9000 9001 9002 9004 7000 8000
-
 ADD kms.init /etc/profile.d/custom.sh
 RUN chmod a+x /etc/profile.d/custom.sh
 
