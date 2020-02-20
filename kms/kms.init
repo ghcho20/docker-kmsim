@@ -7,6 +7,15 @@ MY_IP=$(/usr/bin/host $HOST_CONV | /usr/bin/awk '{print $NF}')
 echo "setup.sh $KMS_NAME $MY_MGMT_IP $KEMS_IP"
 /root/setup.sh $KMS_NAME $MY_IP $KEMS_IP
 
+echo "set peer KMS"
+/root/bin/sqlite3 /root/DB/kms.db "insert into cn_sys (sys_name, p_port) values ('$KMS_PEER', '9004');"
+/root/bin/sqlite3 /root/DB/kms.db "insert into cn_sys_cert (sys_name) values('$KMS_PEER');"
+TS=$(date "+%Y-%m-%d %H:%M:%S") && /root/bin/sqlite3 /root/DB/kms.db \
+"insert into kms_psk_info (target_sys_name, app_name, PSK, update_time, description) 
+values ('$KMS_PEER', 'EPSK', \
+'8BE4935F32866EE40FDB3F29ADF14BCC35B48C92ED89F08D1E0145B45BCC147368C97382CDB7D169B956EE4AA39E8BF7', \
+'$TS', '1*32');"
+
 echo "systemctl start kms"
 /usr/bin/systemctl start kms
 
