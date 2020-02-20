@@ -1,16 +1,15 @@
 FROM tomcat:8.5.38
 
-RUN rm -rf $CATALINA_HOME/webapps/ROOT
+COPY KEMS_20200218.war kems.p12 /tmp/
 
-ADD KEMS_20200218.war /tmp
-RUN unzip /tmp/KEMS_20200218.war -d $CATALINA_HOME/webapps/ROOT; rm -f /tmp/KEMS_20200218.war
-
-ADD kems.p12 /usr/local/tomcat/webapps/ROOT/resources/fileUpload/certFile/default/
-
-WORKDIR "$CATALINA_HOME/webapps/ROOT/WEB-INF/classes/config/properties/"
-RUN sed -i '/^hikari\.url/s/localhost/kemsdb/' conf.properties
-RUN sed -i '/kemsdb:3306/s/\(amp\;\)\(zeroDate\)/\1autoReconnect=true\&amp\;\2/' conf.properties
-RUN sed -i '/upload\.root\.dir/s/=.*$/=${webapp.root}\/resources/' common.properties
-RUN sed -i -e '/rootLogger/s/^#\+//' -e '/rootLogger=DEBUG/s/file, console/stdout, file/' -e '/rootLogger=DEBUG/s/^/#/' log4j.properties
+RUN rm -rf $CATALINA_HOME/webapps/ROOT && \
+    unzip /tmp/KEMS_20200218.war -d $CATALINA_HOME/webapps/ROOT; rm -f /tmp/KEMS_20200218.war && \
+    mkdir -p $CATALINA_HOME/webapps/ROOT/resources/fileUpload/certFile/default && \
+    mv /tmp/kems.p12 $CATALINA_HOME/webapps/ROOT/resources/fileUpload/certFile/default && \
+    cd "$CATALINA_HOME/webapps/ROOT/WEB-INF/classes/config/properties/" && \
+    sed -i '/^hikari\.url/s/localhost/kemsdb/' conf.properties && \
+    sed -i '/kemsdb:3306/s/\(amp\;\)\(zeroDate\)/\1autoReconnect=true\&amp\;\2/' conf.properties && \
+    sed -i '/upload\.root\.dir/s/=.*$/=${webapp.root}\/resources/' common.properties && \
+    sed -i -e '/rootLogger/s/^#\+//' -e '/rootLogger=DEBUG/s/file, console/stdout, file/' -e '/rootLogger=DEBUG/s/^/#/' log4j.properties
 
 WORKDIR "$CATALINA_HOME"
