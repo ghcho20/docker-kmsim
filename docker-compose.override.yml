@@ -15,7 +15,7 @@ services:
       kernel.msgmnb: 6553600
     privileged: true
     volumes:
-      - init_m:/etc/profile.d
+      - init_m:/etc
       - home_m:/root
     environment:
       - KMS_NAME=KMSM
@@ -41,7 +41,7 @@ services:
       kernel.msgmnb: 6553600
     privileged: true
     volumes:
-      - init_s:/etc/profile.d
+      - init_s:/etc
       - home_s:/root
     environment:
       - KMS_NAME=KMSS
