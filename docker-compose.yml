@@ -3,7 +3,7 @@ version: '3.5'
 services:
   mariadb:
     image: mariadb:10.3
-    container_name: kems_db
+    container_name: db
     volumes:
       - ./mariadb:/docker-entrypoint-initdb.d
       - mysql:/var/lib/mysql
@@ -21,17 +21,15 @@ services:
       - mariadb
     restart: on-failure
     image: tomcat:kems
-    container_name: kems_web
+    container_name: kems
     environment:
       - TZ=${TIMEZONE}
-    links:
-      - mariadb:kemsdb
     networks:
       sim_net:
         ipv4_address: 172.16.238.3
     ports:
       - 8080:8080
-    command: bash -c "echo > /dev/tcp/kemsdb/3306; while [ $$? -ne 0 ]; do echo > /dev/tcp/kems_db/3306; sleep 2; done; catalina.sh run"
+    command: bash -c "echo > /dev/tcp/db/3306; while [ $$? -ne 0 ]; do echo > /dev/tcp/kems_db/3306; sleep 2; done; catalina.sh run"
 
 volumes:
   mysql:

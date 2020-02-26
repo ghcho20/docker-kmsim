@@ -7,8 +7,8 @@ RUN rm -rf $CATALINA_HOME/webapps/ROOT && \
     mkdir -p $CATALINA_HOME/webapps/ROOT/resources/fileUpload/certFile/default && \
     mv /tmp/kems.p12 $CATALINA_HOME/webapps/ROOT/resources/fileUpload/certFile/default && \
     cd "$CATALINA_HOME/webapps/ROOT/WEB-INF/classes/config/properties/" && \
-    sed -i '/^hikari\.url/s/localhost/kemsdb/' conf.properties && \
-    sed -i '/kemsdb:3306/s/\(amp\;\)\(zeroDate\)/\1autoReconnect=true\&amp\;\2/' conf.properties && \
+    sed -i '/^hikari\.url/s/localhost/db/' conf.properties && \
+    sed -i '/db:3306/s/\(amp\;\)\(zeroDate\)/\1autoReconnect=true\&amp\;\2/' conf.properties && \
     sed -i '/upload\.root\.dir/s/=.*$/=${webapp.root}\/resources/' common.properties && \
     sed -i -e '/rootLogger/s/^#\+//' -e '/rootLogger=DEBUG/s/file, console/stdout, file/' -e '/rootLogger=DEBUG/s/^/#/' log4j.properties
 
