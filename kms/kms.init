@@ -1,6 +1,6 @@
-KEMS_IP=$(/usr/bin/host kems | /usr/bin/awk '{print $NF}')
+KEMS_IP=$(ping -c 1 kems | head -n 1 | awk -F'[()]' '{ print $2 }')
 HOST_CONV=$(echo $KMS_NAME | tr '[:upper:]' '[:lower:]')
-MY_IP=$(/usr/bin/host $HOST_CONV | /usr/bin/awk '{print $NF}')
+MY_IP=$(ping -c 1 $HOST_CONV | head -n 1 | awk -F'[()]' '{ print $2 }')
 
 /usr/bin/systemctl stop kms
 
