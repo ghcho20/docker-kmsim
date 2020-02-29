@@ -22,6 +22,8 @@ services:
     restart: on-failure
     image: tomcat:kems
     container_name: kems
+    volumes:
+      - wlog:/usr/local/tomcat/logs
     environment:
       - TZ=${TIMEZONE}
     networks:
@@ -33,6 +35,7 @@ services:
 
 volumes:
   mysql:
+  wlog:
 
 networks:
   sim_net:
