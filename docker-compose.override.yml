@@ -14,7 +14,9 @@ services:
     privileged: true
     volumes:
       - init_m:/etc
-      - home_m:/root
+      - cnf_m:/root/config
+      - db_m:/root/DB
+      - log_m:/root/log
     environment:
       - KMS_NAME=KMSM
       - KMS_PEER=KMSS
@@ -38,7 +40,9 @@ services:
     privileged: true
     volumes:
       - init_s:/etc
-      - home_s:/root
+      - cnf_s:/root/config
+      - db_s:/root/DB
+      - log_s:/root/log
     environment:
       - KMS_NAME=KMSS
       - KMS_PEER=KMSM
@@ -52,5 +56,9 @@ services:
 volumes:
   init_m:
   init_s:
-  home_m:
-  home_s:
+  cnf_m:
+  cnf_s:
+  db_m:
+  db_s:
+  log_m:
+  log_s:
