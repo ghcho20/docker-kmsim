@@ -15,10 +15,11 @@ IDQ KMS simulaion in docker
   * kems: 172.16.238.3
   * kmsm: 172.16.238.4
   * kmss: 172.16.238.5
-## branches & tags(#)
-* v211 : v2.1.1 (master#)
-* v202 : v2.0.2 with new QKD simulator
-* v201 : v2.0.1
+## branches(b) & tags(#)
+* v212(#) : v2.1.2 (master)
+* v211(#) : v2.1.1
+* v202(b) : v2.0.2 with new QKD simulator
+* v201(b) : v2.0.1
 
 ## images:
 * kms:0 (base for kms containers derived from centos:systemd)
