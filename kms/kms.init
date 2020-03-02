@@ -4,8 +4,12 @@ MY_IP=$(ping -c 1 $HOST_CONV | head -n 1 | awk -F'[()]' '{ print $2 }')
 
 /usr/bin/systemctl stop kms
 
+# instead of running /root/bin/GIVE_ROOT_PERM
+chown -hR root:root /root
+
 echo "setup.sh $KMS_NAME $MY_MGMT_IP $KEMS_IP"
 /root/setup.sh $KMS_NAME $MY_IP $KEMS_IP
+/root/bin/clean_ipc.sh
 
 echo "set peer KMS"
 /root/bin/sqlite3 /root/DB/kms.db "insert into cn_sys_cert (sys_name) values('$KMS_PEER');"
