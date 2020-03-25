@@ -10,6 +10,6 @@ RUN rm -rf $CATALINA_HOME/webapps/ROOT && \
     sed -i '/^hikari\.url/s/localhost/db/' conf.properties && \
     sed -i '/db:3306/s/\(amp\;\)\(zeroDate\)/\1autoReconnect=true\&amp\;\2/' conf.properties && \
     sed -i '/upload\.root\.dir/s/=.*$/=${webapp.root}\/resources/' common.properties && \
-    sed -i -e '/rootLogger/s/^#\+//' -e '/rootLogger=DEBUG/s/file, console/stdout, file/' -e '/rootLogger=DEBUG/s/^/#/' log4j.properties
+    sed -i -e '1 s/DEBUG/WARN/' log4j.properties
 
 WORKDIR "$CATALINA_HOME"

@@ -17,6 +17,8 @@ services:
       - cnf_m:/root/config
       - db_m:/root/DB
       - log_m:/root/log
+    logging:
+      driver: "none"
     environment:
       - KMS_NAME=KMSM
       - KMS_PEER=KMSS
@@ -43,6 +45,8 @@ services:
       - cnf_s:/root/config
       - db_s:/root/DB
       - log_s:/root/log
+    logging:
+      driver: "none"
     environment:
       - KMS_NAME=KMSS
       - KMS_PEER=KMSM
