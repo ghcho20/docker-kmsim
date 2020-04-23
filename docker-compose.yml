@@ -7,8 +7,6 @@ services:
     volumes:
       - ./mariadb:/docker-entrypoint-initdb.d
       - mysql:/var/lib/mysql
-    logging:
-      driver: "none"
     environment:
       - MYSQL_ROOT_PASSWORD=kmsDb#1234
       - MYSQL_DATABASE=kms_admin
